@@ -1,20 +1,22 @@
+package banque;
+
 public final class Banque {
-    private float cash;
+    private int cash;
     private static Banque instance;
 
-    private Banque() {
-        this.cash = 1000;
+    private Banque(int cash) {
+        this.cash = cash;
     }
 
     public static Banque getInstance() {
         return instance == null ? instance = new Banque() : instance;
     }
 
-    public float getCash() {
+    public int getCash() {
         return cash;
     }
 
-    public void setCash(float cash) {
+    public void setCash(int cash) {
         this.cash = cash;
     }
 }

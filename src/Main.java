@@ -1,3 +1,4 @@
+import banque.Banque;
 import joueur.Joueur;
 import joueur.JoueurDao;
 import joueur.JoueurDaoImpl;
