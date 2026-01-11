@@ -155,9 +155,6 @@ public class Main {
         // 5- mise à jour de la vue
         joueurControler1.updateVue();
 
-        System.out.println("\n--------------------------------------------");
-        System.out.println("-------------- Atelier 6 -------------------");
-        System.out.println("--------------------------------------------\n");
     }
 
     private static void afficherJoueurs(List<Joueur> joueurs) {
