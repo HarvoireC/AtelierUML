@@ -2,7 +2,7 @@ package typeCases;
 
 public class Gare extends Propriete{
     private String nom;
-    private Integer prix;
+    private int prix;
 
     public Gare(Integer prix, String nom) {
         this.prix = prix;
@@ -15,12 +15,12 @@ public class Gare extends Propriete{
     }
 
     @Override
-    public void setPrix(Integer prix) {
+    public void setPrix(int prix) {
         this.prix = prix;
     }
 
     @Override
-    public Integer getPrix() {
+    public int getPrix() {
         return this.prix;
     }
 

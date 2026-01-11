@@ -1,5 +1,5 @@
 package typeCases;
 
 public abstract class ProprieteFactory {
-    public abstract Propriete creer(String nom, Integer prix);
+    public abstract Propriete creer(String nom, int prix);
 }

@@ -2,9 +2,9 @@ package typeCases;
 
 public class CompagnieEE extends Propriete{
     private String nom;
-    private Integer prix;
+    private int prix;
 
-    public CompagnieEE(Integer prix,String nom){
+    public CompagnieEE(int prix,String nom){
         this.prix = prix;
         this.nom = nom;
     }
@@ -14,12 +14,12 @@ public class CompagnieEE extends Propriete{
     }
 
     @Override
-    public void setPrix(Integer prix) {
+    public void setPrix(int prix) {
         this.prix = prix;
     }
 
     @Override
-    public Integer getPrix() {
+    public int getPrix() {
         return this.prix;
     }
 
