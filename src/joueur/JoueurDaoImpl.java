@@ -10,9 +10,9 @@ public class JoueurDaoImpl implements JoueurDao {
 
     public JoueurDaoImpl() {
         joueurs = new ArrayList<>();
-        joueurs.add(new Joueur("Bertrand", 1500));
-        joueurs.add(new Joueur("Gyslaine", 1500));
-        joueurs.add(new Joueur("Patoche", 1500));
+        addJoueur(new Joueur("Bertrand", 1500));
+        addJoueur(new Joueur("Gyslaine", 1500));
+        addJoueur(new Joueur("Patoche", 1500));
     }
 
     @Override
