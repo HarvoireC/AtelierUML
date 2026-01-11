@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JoueurDaoImpl implements JoueurDao {
-    private List<Joueur> joueurs;
+    private final List<Joueur> joueurs;
 
     public JoueurDaoImpl() {
         joueurs = new ArrayList<>();
