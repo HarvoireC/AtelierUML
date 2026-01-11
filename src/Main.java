@@ -1,5 +1,5 @@
 import banque.Banque;
-import joueur.Joueur;
+import joueur.dto.Joueur;
 import joueur.JoueurDao;
 import joueur.JoueurDaoImpl;
 import plateau.Case;
@@ -19,7 +19,7 @@ public class Main {
 
         System.out.println("--------------------------------------------");
         System.out.println("-------------- Atelier 1 -------------------");
-        System.out.println("--------------------------------------------");
+        System.out.println("--------------------------------------------\n");
 
         // 1- création d’un premier objet b1 de type Banque, cash=1000
         System.out.println("création d’un premier objet b1 de type Banque, cash=1000");
@@ -36,32 +36,39 @@ public class Main {
         System.out.println(" - Cash b1 : "+b1.getCash());
 
 
-        System.out.println("--------------------------------------------");
-        System.out.println("-------------- Atelier 2 (V2)---------------");
-        System.out.println("--------------------------------------------");
 
+        System.out.println("\n--------------------------------------------");
+        System.out.println("-------------- Atelier 2 (V2)---------------");
+        System.out.println("--------------------------------------------\n");
+
+        // 1- création d’une factory terrainFactory et d’une factory gareFactory
         ProprieteFactory terrainFactory = new TerrainFactory();
         ProprieteFactory gareFactory = new GareFactory();
-        ProprieteFactory compagnieFactory = new CompagnieEEFactory();
 
+        //2- création des terrains Rue de la Paix - 400€, Rue de Courcelles – 100€, et affichage
         Propriete terrain1 = terrainFactory.creer("Rue de la Paix", 400);
         Propriete terrain2 = terrainFactory.creer("Rue de Courcelles", 100);
-        Propriete gare1 = gareFactory.creer("Montparnasse", 200);
-
+        System.out.println("création des terrains Rue de la Paix - 400€, Rue de Courcelles – 100€ : ");
+        System.out.print("- terrain 1 : ");
         terrain1.afficher();
+        System.out.print("- terrain 2 : ");
         terrain2.afficher();
+
+        //3- création de la gare Montparnasse – 200€, et affichage
+        Propriete gare1 = gareFactory.creer("Montparnasse", 200);
+        System.out.println("création de la gare Montparnasse – 200€ :");
+        System.out.print("- gare : ");
         gare1.afficher();
 
-        System.out.println("--------------------------------------------");
+        System.out.println("\n--------------------------------------------");
         System.out.println("-------------- Atelier 3 -------------------");
-        System.out.println("--------------------------------------------");
+        System.out.println("--------------------------------------------\n");
         // 1- Création d'un objet plateau
-        System.out.println("=== 1. Création du plateau ===");
+        System.out.println("Création du plateau");
         Plateau plateau = new Plateau();
-        System.out.println("Plateau créé avec succès!\n");
 
         // 2- Création des 10 premières cases du jeu et ajout dans le plateau
-        System.out.println("=== 2. Création et ajout des cases ===");
+        System.out.println("Création des 10 premières cases et ajout dans le plateau");
         plateau.ajouterCase(new Case(0, "Départ"));
         plateau.ajouterCase(new Case(1, "Avenue des Champs-Élysées"));
         plateau.ajouterCase(new Case(2, "Caisse de communauté"));
@@ -73,76 +80,60 @@ public class Main {
         plateau.ajouterCase(new Case(8, "Prison"));
         plateau.ajouterCase(new Case(9, "Avenue Mozart"));
 
-        System.out.println("Nombre de cases créées : " + plateau.nbCases() + "\n");
+        System.out.println("Nombre de cases créées : " + plateau.nbCases());
 
         // 3- Boucle de parcours sur le plateau et affichage de chaque case
-        System.out.println("=== 3. Parcours du plateau avec l'itérateur ===");
+        System.out.println("Parcours du plateau :");
         Iterator iterator = plateau.iterator();
         try{
             while (iterator.hasNext()) {
                 Case caseActuelle = iterator.next();
+                System.out.print(" - ");
                 caseActuelle.afficher();
             }
 
         }catch(Exception e){
-            System.out.println(e.getMessage());
+            System.err.println(e.getMessage());
+            e.printStackTrace(System.err);
         }
 
-        System.out.println("--------------------------------------------");
+        System.out.println("\n--------------------------------------------");
         System.out.println("-------------- Atelier 4 -------------------");
-        System.out.println("--------------------------------------------");
+        System.out.println("--------------------------------------------\n");
 
 
-        JoueurDao joueurDao = new JoueurDaoImpl();
 
-        System.out.println("╔════════════════════════════════════════════╗");
-        System.out.println("║   GESTION DE LA PERSISTANCE DES JOUEURS   ║");
-        System.out.println("╚════════════════════════════════════════════╝\n");
 
         // 1- Récupération de la liste des joueurs (3 joueurs préenregistrés)
-        System.out.println("=== 1. RÉCUPÉRATION DE LA LISTE DES JOUEURS ===");
+        JoueurDao joueurDao = new JoueurDaoImpl();
+        System.out.println("Récupération de la liste des joueurs :");
         List<Joueur> joueurs = joueurDao.getTousLesJoueurs();
         afficherJoueurs(joueurs);
 
         // 2- Ajout de 100€ à chaque joueur
-        System.out.println("\n=== 2. AJOUT DE 100€ À CHAQUE JOUEUR ===");
+        // et
+        // 3- mise à jour des joueurs
+        System.out.println("\nAjout de 100€ à chaque joueurs et mise à jour des joueurs :");
         for (Joueur joueur : joueurs) {
-            joueur.setCash(joueur.getCash() + 100);
-            joueurDao.updateJoueur(joueur);
+            joueur.setCash(joueur.getCash() + 100); // 2-
+            joueurDao.updateJoueur(joueur);         // 3-
         }
 
-        // 3- Mise à jour des joueurs
-        System.out.println("\n=== 3. MISE À JOUR DES JOUEURS ===");
-        Joueur alice = joueurs.get(0);
-        alice.setCash(alice.getCash() + 500); // Alice gagne 500€ de plus
-        joueurDao.updateJoueur(alice);
-
         // 4- Suppression d'un joueur
-        System.out.println("\n=== 4. SUPPRESSION D'UN JOUEUR ===");
-        Joueur joueurASupprimer = joueurs.get(1); // Bob
+        Joueur joueurASupprimer = joueurs.get(0);
+        System.out.println("\nSuppression du joueur : "+joueurASupprimer.getPrenom());
         joueurDao.deleteJoueur(joueurASupprimer);
 
         // 5- Récupération de la liste des joueurs pour affichage (boucle)
-        System.out.println("\n=== 5. AFFICHAGE FINAL DE LA LISTE DES JOUEURS ===");
+        System.out.println("\nListe finale des joueurs :");
         List<Joueur> joueursFinaux = joueurDao.getTousLesJoueurs();
         afficherJoueurs(joueursFinaux);
 
-        System.out.println("\n╔════════════════════════════════════════════╗");
-        System.out.println("║            FIN DU PROGRAMME                ║");
-        System.out.println("╚════════════════════════════════════════════╝");
     }
-
-    // Méthode utilitaire pour afficher les joueurs
     private static void afficherJoueurs(List<Joueur> joueurs) {
-        if (joueurs.isEmpty()) {
-            System.out.println("Aucun joueur enregistré.");
-        } else {
-            for (int i = 0; i < joueurs.size(); i++) {
-                System.out.println((i + 1) + ". " + joueurs.get(i));
-            }
+        for (Joueur joueur : joueurs){
+            System.out.print(" - ");
+            System.out.println(joueur.toString());
         }
-
-
-        System.out.println("\n=== Fin du parcours ===");
     }
 }

@@ -11,7 +11,7 @@ public class Gare extends Propriete{
 
     @Override
     public void afficher() {
-        System.out.println("la gare "+nom+" coute "+prix);
+        System.out.println("la gare "+nom+" coute "+prix+"€");
     }
 
     @Override

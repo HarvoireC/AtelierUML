@@ -10,7 +10,7 @@ public class CompagnieEE extends Propriete{
     }
     @Override
     public void afficher() {
-        System.out.println("la compagnie "+nom+" coute "+prix);
+        System.out.println("la compagnie "+nom+" coute "+prix+"€");
     }
 
     @Override

@@ -1,5 +1,7 @@
 package joueur;
 
+import joueur.dto.Joueur;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,15 +10,14 @@ public class JoueurDaoImpl implements JoueurDao {
 
     public JoueurDaoImpl() {
         joueurs = new ArrayList<>();
-        // Initialisation avec 3 joueurs préenregistrés
-        joueurs.add(new Joueur("Alice", 1500));
-        joueurs.add(new Joueur("Bob", 1500));
-        joueurs.add(new Joueur("Charlie", 1500));
+        joueurs.add(new Joueur("Bertrand", 1500));
+        joueurs.add(new Joueur("Gyslaine", 1500));
+        joueurs.add(new Joueur("Patoche", 1500));
     }
 
     @Override
     public List<Joueur> getTousLesJoueurs() {
-        return new ArrayList<>(joueurs); // Retourne une copie
+        return new ArrayList<>(joueurs);
     }
 
     @Override
@@ -39,11 +40,12 @@ public class JoueurDaoImpl implements JoueurDao {
 
     @Override
     public void deleteJoueur(Joueur joueur) {
-        boolean removed = joueurs.removeIf(j -> j.getPrenom().equals(joueur.getPrenom()));
-        if (removed) {
-            System.out.println("Joueur supprimé : " + joueur.getPrenom());
-        } else {
-            System.out.println("Joueur non trouvé pour suppression");
+        boolean existe = joueurs.contains(joueur);
+        if (existe){
+            joueurs.remove(joueur);
+            System.out.println("le joueur " + joueur.getPrenom() + " a été supprimé");
+        }else{
+            System.out.println("Aucun joueur portant le nom "+joueur.getPrenom()+" n'a été trouvé");
         }
     }
 }

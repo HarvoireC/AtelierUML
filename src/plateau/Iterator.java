@@ -1,6 +1,6 @@
 package plateau;
 
-public interface Iterator {
-    boolean hasNext();
-    Case next();
+public abstract class Iterator {
+    public abstract boolean hasNext();
+    public abstract Case next();
 }

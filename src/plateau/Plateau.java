@@ -4,15 +4,15 @@ package plateau;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Plateau implements Aggregate {
-    private List<Case> cases;
+public class Plateau extends Aggregate {
+    private final List<Case> cases;
 
     public Plateau() {
         cases = new ArrayList<>();
     }
 
     public void ajouterCase(Case c) {
-        cases.add(c);  // C'est tout ! 🎉
+        cases.add(c);
     }
 
     public Case getCase(int i) {
@@ -23,7 +23,7 @@ public class Plateau implements Aggregate {
     }
 
     public int nbCases() {
-        return cases.size();  // Automatique !
+        return cases.size();
     }
 
     public Iterator iterator() {

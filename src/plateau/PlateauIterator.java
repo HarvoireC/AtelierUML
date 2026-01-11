@@ -2,8 +2,8 @@ package plateau;
 
 import java.util.List;
 
-class PlateauIterator implements Iterator {
-    private List<Case> cases;
+class PlateauIterator extends Iterator {
+    private final List<Case> cases;
     private int position = 0;
 
     public PlateauIterator(List<Case> cases) {

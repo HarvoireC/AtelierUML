@@ -1,5 +1,7 @@
 package joueur;
 
+import joueur.dto.Joueur;
+
 import java.util.List;
 
 public interface JoueurDao {

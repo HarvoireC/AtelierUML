@@ -1,8 +1,8 @@
 package plateau;
 
 public class Case {
-    private int numero;
-    private String nom;
+    private final int numero;
+    private final String nom;
 
     public Case(int numero, String nom) {
         this.numero = numero;

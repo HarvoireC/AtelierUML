@@ -1,5 +1,5 @@
 package plateau;
 
-interface Aggregate {
-    Iterator iterator();
+public abstract class Aggregate {
+    public abstract Iterator iterator();
 }

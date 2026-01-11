@@ -11,7 +11,7 @@ public class Terrain extends Propriete{
 
     @Override
     public void afficher() {
-        System.out.println("le terrain " + nom + " coute " + prix);
+        System.out.println("le terrain " + nom + " coute " + prix+"€");
     }
 
     @Override
