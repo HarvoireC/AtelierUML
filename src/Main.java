@@ -1,11 +1,16 @@
 import banque.Banque;
-import joueur.dto.Joueur;
 import joueur.JoueurDao;
 import joueur.JoueurDaoImpl;
+import joueur.controler.JoueurControler;
+import joueur.dto.Joueur;
+import joueur.presentation.JoueurVue;
 import plateau.Case;
 import plateau.Iterator;
 import plateau.Plateau;
-import typeCases.*;
+import typeCases.GareFactory;
+import typeCases.Propriete;
+import typeCases.ProprieteFactory;
+import typeCases.TerrainFactory;
 
 import java.util.List;
 
@@ -25,16 +30,15 @@ public class Main {
         System.out.println("création d’un premier objet b1 de type Banque, cash=1000");
         Banque b1 = Banque.getInstance(1000);
         // 2- affichage du cash de b1
-        System.out.println("Cash b1 : "+b1.getCash());
+        System.out.println("Cash b1 : " + b1.getCash());
         // 3- création d’un second objet b2 de type Banque, cash=500
         System.out.println("création d’un second objet b2 de type Banque, cash=500");
         Banque b2 = Banque.getInstance(500);
         // 4- affichage du cash de b2
         System.out.println("Cash de b1 et de b2 apres la création de l'objet b2 :");
-        System.out.println(" - Cash b2 : "+b2.getCash());
+        System.out.println(" - Cash b2 : " + b2.getCash());
         // 5- affichage du cash de b1
-        System.out.println(" - Cash b1 : "+b1.getCash());
-
+        System.out.println(" - Cash b1 : " + b1.getCash());
 
 
         System.out.println("\n--------------------------------------------");
@@ -85,14 +89,14 @@ public class Main {
         // 3- Boucle de parcours sur le plateau et affichage de chaque case
         System.out.println("Parcours du plateau :");
         Iterator iterator = plateau.iterator();
-        try{
+        try {
             while (iterator.hasNext()) {
                 Case caseActuelle = iterator.next();
                 System.out.print(" - ");
                 caseActuelle.afficher();
             }
 
-        }catch(Exception e){
+        } catch (Exception e) {
             System.err.println(e.getMessage());
             e.printStackTrace(System.err);
         }
@@ -100,8 +104,6 @@ public class Main {
         System.out.println("\n--------------------------------------------");
         System.out.println("-------------- Atelier 4 -------------------");
         System.out.println("--------------------------------------------\n");
-
-
 
 
         // 1- Récupération de la liste des joueurs (3 joueurs préenregistrés)
@@ -121,7 +123,7 @@ public class Main {
 
         // 4- Suppression d'un joueur
         Joueur joueurASupprimer = joueurs.get(0);
-        System.out.println("\nSuppression du joueur : "+joueurASupprimer.getPrenom());
+        System.out.println("\nSuppression du joueur : " + joueurASupprimer.getPrenom());
         joueurDao.deleteJoueur(joueurASupprimer);
 
         // 5- Récupération de la liste des joueurs pour affichage (boucle)
@@ -129,9 +131,37 @@ public class Main {
         List<Joueur> joueursFinaux = joueurDao.getTousLesJoueurs();
         afficherJoueurs(joueursFinaux);
 
+        System.out.println("\n--------------------------------------------");
+        System.out.println("-------------- Atelier 5 -------------------");
+        System.out.println("--------------------------------------------\n");
+
+        //1- récupération d’un joueur de la base de données (simulé)
+        System.out.println("Récupération de la liste des joueurs (Simulé dans la DAO :");
+        List<Joueur> joueursSimules = joueurDao.getTousLesJoueurs();
+        afficherJoueurs(joueursSimules);
+
+
+        // 2- création d’une vue Joueur
+        JoueurVue joueurVue1 = new JoueurVue();
+
+
+        // 3- création d’un contrôleur Joueur et affichage (de la vue)
+        JoueurControler joueurControler1 = new JoueurControler(joueurVue1, joueursSimules.get(0));
+        joueurControler1.updateVue();
+
+        // 4- ajout de 100€ au cash du joueur
+        joueurControler1.setCash(joueurControler1.getCash() + 100);
+
+        // 5- mise à jour de la vue
+        joueurControler1.updateVue();
+
+        System.out.println("\n--------------------------------------------");
+        System.out.println("-------------- Atelier 6 -------------------");
+        System.out.println("--------------------------------------------\n");
     }
+
     private static void afficherJoueurs(List<Joueur> joueurs) {
-        for (Joueur joueur : joueurs){
+        for (Joueur joueur : joueurs) {
             System.out.print(" - ");
             System.out.println(joueur.toString());
         }

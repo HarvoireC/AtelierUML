@@ -1,6 +1,6 @@
 package typeCases;
 
-public class Gare extends Propriete{
+public class Gare extends Propriete {
     private String nom;
     private int prix;
 
@@ -11,7 +11,7 @@ public class Gare extends Propriete{
 
     @Override
     public void afficher() {
-        System.out.println("la gare "+nom+" coute "+prix+"€");
+        System.out.println("la gare " + nom + " coute " + prix + "€");
     }
 
     @Override

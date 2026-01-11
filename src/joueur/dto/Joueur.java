@@ -4,6 +4,7 @@ public class Joueur {
     private String prenom;
     private int cash;
 
+
     public Joueur(String prenom, int cash) {
         this.prenom = prenom;
         this.cash = cash;

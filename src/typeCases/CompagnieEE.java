@@ -1,16 +1,17 @@
 package typeCases;
 
-public class CompagnieEE extends Propriete{
+public class CompagnieEE extends Propriete {
     private String nom;
     private int prix;
 
-    public CompagnieEE(int prix,String nom){
+    public CompagnieEE(int prix, String nom) {
         this.prix = prix;
         this.nom = nom;
     }
+
     @Override
     public void afficher() {
-        System.out.println("la compagnie "+nom+" coute "+prix+"€");
+        System.out.println("la compagnie " + nom + " coute " + prix + "€");
     }
 
     @Override

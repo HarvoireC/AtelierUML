@@ -41,11 +41,11 @@ public class JoueurDaoImpl implements JoueurDao {
     @Override
     public void deleteJoueur(Joueur joueur) {
         boolean existe = joueurs.contains(joueur);
-        if (existe){
+        if (existe) {
             joueurs.remove(joueur);
             System.out.println("le joueur " + joueur.getPrenom() + " a été supprimé");
-        }else{
-            System.out.println("Aucun joueur portant le nom "+joueur.getPrenom()+" n'a été trouvé");
+        } else {
+            System.out.println("Aucun joueur portant le nom " + joueur.getPrenom() + " n'a été trouvé");
         }
     }
 }

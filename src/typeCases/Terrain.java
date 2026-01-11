@@ -1,8 +1,8 @@
 package typeCases;
 
-public class Terrain extends Propriete{
+public class Terrain extends Propriete {
     private String nom;
-    private Integer prix;
+    private int prix;
 
     public Terrain(Integer prix, String nom) {
         this.prix = prix;
@@ -11,7 +11,7 @@ public class Terrain extends Propriete{
 
     @Override
     public void afficher() {
-        System.out.println("le terrain " + nom + " coute " + prix+"€");
+        System.out.println("le terrain " + nom + " coute " + prix + "€");
     }
 
     @Override
