@@ -1,3 +1,5 @@
+package typeCases;
+
 public class GareFactory extends ProprieteFactory{
 
     @Override

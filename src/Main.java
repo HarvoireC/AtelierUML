@@ -5,6 +5,7 @@ import joueur.JoueurDaoImpl;
 import plateau.Case;
 import plateau.Iterator;
 import plateau.Plateau;
+import typeCases.*;
 
 import java.util.List;
 
@@ -20,18 +21,23 @@ public class Main {
         System.out.println("-------------- Atelier 1 -------------------");
         System.out.println("--------------------------------------------");
 
-        Banque b1 = Banque.getInstance();
-        System.out.println(b1.getCash());
+        // 1- création d’un premier objet b1 de type Banque, cash=1000
+        System.out.println("création d’un premier objet b1 de type Banque, cash=1000");
+        Banque b1 = Banque.getInstance(1000);
+        // 2- affichage du cash de b1
+        System.out.println("Cash b1 : "+b1.getCash());
+        // 3- création d’un second objet b2 de type Banque, cash=500
+        System.out.println("création d’un second objet b2 de type Banque, cash=500");
+        Banque b2 = Banque.getInstance(500);
+        // 4- affichage du cash de b2
+        System.out.println("Cash de b1 et de b2 apres la création de l'objet b2 :");
+        System.out.println(" - Cash b2 : "+b2.getCash());
+        // 5- affichage du cash de b1
+        System.out.println(" - Cash b1 : "+b1.getCash());
 
-        Banque b2 = Banque.getInstance();
-        System.out.println(b2.getCash());
-
-        b1.setCash(2000);
-        System.out.println("On affiche b2 apres avoir augmenter le cash avec b1");
-        System.out.println(b2.getCash());
 
         System.out.println("--------------------------------------------");
-        System.out.println("-------------- Atelier 2 -------------------");
+        System.out.println("-------------- Atelier 2 (V2)---------------");
         System.out.println("--------------------------------------------");
 
         ProprieteFactory terrainFactory = new TerrainFactory();
@@ -60,7 +66,7 @@ public class Main {
         plateau.ajouterCase(new Case(1, "Avenue des Champs-Élysées"));
         plateau.ajouterCase(new Case(2, "Caisse de communauté"));
         plateau.ajouterCase(new Case(3, "Rue de la Paix"));
-        plateau.ajouterCase(new Case(4, "Gare du Nord"));
+        plateau.ajouterCase(new Case(4, "typeCases.Gare du Nord"));
         plateau.ajouterCase(new Case(5, "Boulevard Saint-Michel"));
         plateau.ajouterCase(new Case(6, "Chance"));
         plateau.ajouterCase(new Case(7, "Place Pigalle"));

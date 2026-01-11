@@ -1,15 +1,16 @@
-public class Terrain extends Propriete{
+package typeCases;
+
+public class CompagnieEE extends Propriete{
     private String nom;
     private Integer prix;
 
-    public Terrain(Integer prix, String nom) {
+    public CompagnieEE(Integer prix,String nom){
         this.prix = prix;
         this.nom = nom;
     }
-
     @Override
     public void afficher() {
-        System.out.println("le terrain : " + nom + " a un prix de : " + prix);
+        System.out.println("la compagnie "+nom+" coute "+prix);
     }
 
     @Override
@@ -25,11 +26,12 @@ public class Terrain extends Propriete{
     @Override
     public void setNom(String nom) {
         this.nom = nom;
-
     }
 
     @Override
     public String getNom() {
         return this.nom;
     }
+
+
 }

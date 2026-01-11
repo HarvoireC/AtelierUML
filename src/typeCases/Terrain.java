@@ -1,15 +1,17 @@
-public class Gare extends Propriete{
+package typeCases;
+
+public class Terrain extends Propriete{
     private String nom;
     private Integer prix;
 
-    public Gare(Integer prix, String nom) {
+    public Terrain(Integer prix, String nom) {
         this.prix = prix;
         this.nom = nom;
     }
 
     @Override
     public void afficher() {
-        System.out.println("la gare "+nom+" a un prix de "+prix);
+        System.out.println("le terrain " + nom + " coute " + prix);
     }
 
     @Override
@@ -25,6 +27,7 @@ public class Gare extends Propriete{
     @Override
     public void setNom(String nom) {
         this.nom = nom;
+
     }
 
     @Override

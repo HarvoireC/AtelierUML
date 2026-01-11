@@ -1,14 +1,17 @@
-public class CompagnieEE extends Propriete{
+package typeCases;
+
+public class Gare extends Propriete{
     private String nom;
     private Integer prix;
 
-    public CompagnieEE(Integer prix,String nom){
+    public Gare(Integer prix, String nom) {
         this.prix = prix;
         this.nom = nom;
     }
+
     @Override
     public void afficher() {
-        System.out.println("la compagnie "+nom+" a un prix de "+prix);
+        System.out.println("la gare "+nom+" coute "+prix);
     }
 
     @Override
@@ -30,6 +33,4 @@ public class CompagnieEE extends Propriete{
     public String getNom() {
         return this.nom;
     }
-
-
 }

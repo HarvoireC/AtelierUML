@@ -1,3 +1,5 @@
+package typeCases;
+
 public abstract class Propriete {
     public abstract void afficher();
     public abstract void setPrix(Integer prix);

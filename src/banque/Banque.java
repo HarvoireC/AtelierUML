@@ -8,8 +8,8 @@ public final class Banque {
         this.cash = cash;
     }
 
-    public static Banque getInstance() {
-        return instance == null ? instance = new Banque() : instance;
+    public static Banque getInstance(int cash) {
+        return instance == null ? instance = new Banque(cash) : instance;
     }
 
     public int getCash() {
